@@ -30,21 +30,25 @@ FlexiFit Gym wants a database to manage its members, trainers, and fitness progr
 
 ### Entities and Attributes
 
+### Entities
+
 | Entity | Attributes (PK, FK) | Notes |
 |--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
+| Member | **member_id (PK)**, first_name, last_name, gender, phone_no | Strong entity. `member_id` is not in the diagram, so it is added as a PK. |
+| Program | **program_id (PK)**, name, duration | Strong entity. |
+| Trainer | **trainer_id (PK)**, name, phone_no | Strong entity. |
+| Training Session | **session_id (PK)**, time, trainer_id (FK), member_id (FK) | Strong entity. The FKs come from the `mentor` and `book` relationships. |
+| Payment | **payment_id (PK)**, date, amount | Strong entity. `payment_id` is not in the diagram, so it is added as a PK. |
 
 ### Relationships and Constraints
 
 | Relationship | Cardinality | Participation | Notes |
 |--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
+| Enroll (Member – Program) | M:N | Member: partial, Program: partial | Relationship attributes: `date`, `status`. Becomes a junction table `Enroll(member_id, program_id, date, status)`. |
+| Conduct (Program – Trainer) | N:1 (a trainer conducts many programs) | Program: total, Trainer: partial | `trainer_id` goes in Program as an FK. |
+| Book (Member – Training Session) | 1:N (a member books many sessions) | Member: partial, Session: total | `member_id` goes in Training Session as an FK. |
+| Mentor (Trainer – Training Session) | 1:N (a trainer mentors many sessions) | Trainer: partial, Session: total | `trainer_id` goes in Training Session as an FK. |
+| Makes (Member – Payment) | M:N (as labelled in the diagram) | Member: total, Payment: total (double lines) | Needs a junction table `Makes(member_id, payment_id)`. |
 
 ### Assumptions
 - 
@@ -77,19 +81,25 @@ The Central Library wants to manage book lending and cultural events.
 
 | Entity | Attributes (PK, FK) | Notes |
 |--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
+| Member | MemberID (PK), FirstName, LastName, Gender, PhoneNo | Member details |
+| Book | BookID (PK), Title, Category, Duration | Book details |
+| Speaker | SpeakerID (PK), Name, PhoneNo | Speaker details |
+| Event | EventID (PK), Time, MemberID (FK), RoomID (FK) | Event details |
+| Room | RoomID (PK), Room, Location | Room details |
+| Loan | LoanID (PK), Date, MemberID (FK) | Loan details |
+| Fine | FineID (PK), Amount, Reason, LoanID (FK) | Fine details |
 
 ### Relationships and Constraints
 
 | Relationship | Cardinality | Participation | Notes |
 |--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
+| Member – Book | M:N | Partial – Partial | Member borrows books |
+| Book – Speaker | M:N | Partial – Partial | Book features speakers |
+| Member – Loan | 1:N | Partial – Total | Member has multiple loans |
+| Member – Event | M:N | Partial – Partial | Member registers for events |
+| Event – Room | N:1 | Total – Partial | Event books a room |
+| Loan – Fine | 1:0..1 | Partial – Total | Loan generates a fine |
+
 
 ### Assumptions
 - 
@@ -123,19 +133,27 @@ A popular restaurant wants to manage reservations, orders, and billing.
 
 | Entity | Attributes (PK, FK) | Notes |
 |--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
+| Customer | Email (PK), FirstName, LastName, PhoneNo | Customer details |
+| Reservation | ReservationID (PK), Date, Time, NumberOfGuests, CustomerEmail (FK), TableID (FK) | Reservation details |
+| Table | TableID (PK), Name, PhoneNo, WaiterID (FK) | Table details |
+| Waiter | WaiterID (PK), PhoneNo | Waiter details |
+| Order | OrderID (PK), Time, CustomerEmail (FK), WaiterID (FK) | Order details |
+| Bill | BillID (PK), Tax, TotalAmount, OrderID (FK) | Billing details |
+| Dish | DishID (PK), Name, Description, Amount, CategoryID (FK) | Dish details |
+| Category | CategoryID (PK), Name | Category details |
 
 ### Relationships and Constraints
 
 | Relationship | Cardinality | Participation | Notes |
 |--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
+| Customer – Reservation | 1:N | Partial – Total | Customer creates reservations |
+| Reservation – Table | N:1 | Total – Partial | Reservation uses a table |
+| Table – Waiter | N:1 | Total – Partial | Table managed by waiter |
+| Waiter – Order | 1:N | Partial – Total | Waiter handles orders |
+| Customer – Order | 1:N | Partial – Total | Customer places orders |
+| Order – Dish | M:N | Partial – Partial | Order contains dishes |
+| Category – Dish | 1:N | Partial – Total | Dish belongs to category |
+| Order – Bill | 1:1 | Total – Total | Order has a bill |
 
 ### Assumptions
 - 
