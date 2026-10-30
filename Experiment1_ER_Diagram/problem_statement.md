@@ -1,4 +1,4 @@
-# ER Diagram Workshop – Submission Template
+<img width="1528" height="924" alt="dbms exp 1 b" src="https://github.com/user-attachments/assets/71de39f0-9470-4a0f-90e1-16a557cda019" /># ER Diagram Workshop – Submission Template
 
 ## Objective
 To understand and apply ER modeling concepts by creating ER diagrams for real-world applications.
@@ -22,8 +22,11 @@ FlexiFit Gym wants a database to manage its members, trainers, and fitness progr
 - Payments tracked for memberships and sessions.
 
 ### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_fitness.png)
+
+<img width="1532" height="870" alt="dbms exp 1 a" src="https://github.com/user-attachments/assets/c64c4960-c2ce-4ac2-8627-a4b2fa4ace50" />
+
+<img width="1263" height="660" alt="Screenshot 2026-10-27 143039" src="https://github.com/user-attachments/assets/966f1e66-7f85-4fa9-8eed-7a8d22ad8b30" />
+
 
 ### Entities and Attributes
 
@@ -64,8 +67,11 @@ The Central Library wants to manage book lending and cultural events.
 - Overdue fines apply for late returns.
 
 ### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_library.png)
+<img width="1528" height="924" alt="dbms exp 1 b" src="https://github.com/user-attachments/assets/83e6fefe-2535-43e1-b8dd-5eae27de3ddf" />
+
+<img width="1267" height="667" alt="Screenshot 2026-10-30 203000" src="https://github.com/user-attachments/assets/e707ea60-38f9-44b7-b6f7-9119a937a9d2" />
+
+
 
 ### Entities and Attributes
 
@@ -106,8 +112,12 @@ A popular restaurant wants to manage reservations, orders, and billing.
 - Waiters assigned to serve reservations.
 
 ### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_restaurant.png)
+
+<img width="1225" height="692" alt="Screenshot 2026-10-30 204045" src="https://github.com/user-attachments/assets/a13bbf32-f0f6-4933-8a6a-7fab3775fc73" />
+
+<img width="1556" height="983" alt="dbms exp 1 c" src="https://github.com/user-attachments/assets/6c2d47fb-385d-4759-8938-dce2b4e62f2d" />
+
+
 
 ### Entities and Attributes
 
