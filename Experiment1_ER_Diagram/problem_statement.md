@@ -1,4 +1,4 @@
-<img width="1528" height="924" alt="dbms exp 1 b" src="https://github.com/user-attachments/assets/71de39f0-9470-4a0f-90e1-16a557cda019" /># ER Diagram Workshop – Submission Template
+# ER Diagram Workshop – Submission Template
 
 ## Objective
 To understand and apply ER modeling concepts by creating ER diagrams for real-world applications.
